@@ -1,13 +1,20 @@
-var sugar = require('sugar')
+require('sugar')
+require('colors')
 
 var parser = require('./src/parser/grammar.js')
 var run = require('./src/goblin.js')
 
+var expr = 'forall x, y. (x and y) = not (not x or not y)'
+
 try {
-	var ast = parser.parse('forall x, y. (x and y) = not (not x or not y)')
+	var ast = parser.parse(expr)
 } catch (e) {
-	console.log(e)
-	console.log(JSON.stringify(e, null, 4))
+	console.log(expr)
+	console.log(new Array(e.column).join(" ") + "^".red)
+	console.log(new Array(e.message.length+1).join("-").red)
+	console.log(e.message.red)
+	console.log(new Array(e.message.length+1).join("-").red)
+	process.exit(1)
 }
 
 	var result = run(ast)
