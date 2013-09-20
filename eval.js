@@ -4,7 +4,7 @@ require('colors')
 var parser = require('./src/parser/grammar.js')
 var run = require('./src/goblin.js')
 
-var expr = 'forall x, y. (x and y) = not (not x or not y)'
+var expr = process.argv[2]
 
 try {
 	var ast = parser.parse(expr)
@@ -21,5 +21,5 @@ try {
 
 console.log(JSON.stringify(ast, null, 4))
 
-console.log("==========================")
-console.log(result);
+console.log("====================================")
+console.log(result.toString().blue);
