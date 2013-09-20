@@ -1,0 +1,8 @@
+{
+	"dependencies": {
+		"colors"   	:  "*",
+		"mocha" 	:  "*",
+		"pegjs" 	:  "*",
+		"sugar"    	:  "*"
+	}
+}
