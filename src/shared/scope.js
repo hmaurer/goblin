@@ -17,7 +17,7 @@ Scope.prototype.get = function (key) {
 }
 
 Scope.prototype.has = function (key) {
-	return Object.has(this.objects, key)
+	return Object.has(this.objects, key) || (this.parent ? this.parent.has(key) : false)
 }
 
 module.exports = Scope

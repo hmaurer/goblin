@@ -8,7 +8,7 @@ function process(ast) {
 		}
 	}
 	var env = new Environment(config)
-	return env.visit(ast, 'Bool')
+	return env.visit(ast, 'bool')
 }
 
 module.exports = {

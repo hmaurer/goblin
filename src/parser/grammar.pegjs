@@ -35,7 +35,7 @@ varlist
 	}
 
 var
-	= id:identifier t:(_ ':' _ type_name)? {
+	= id:identifier t:(_ ':' _ identifier)? {
 		return p(T.createVariable(id, t[3]))
 	}
 
@@ -97,9 +97,5 @@ boolean_literal
 
 identifier
 	= _ head:[a-zA-Z] tail:[a-zA-Z0-9_]* _ { return p(T.createIdentifier(head + tail.join(''))) }
-
-type_name
-	= _ head:[A-Z] tail:[a-zA-Z0-9_]* _ { return p(T.createIdentifier(head + tail.join(''))) }
-
 _
 	= [ \t\r\n]*

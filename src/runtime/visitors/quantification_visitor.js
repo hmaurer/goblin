@@ -25,7 +25,7 @@ function quantify(quantifier, variable, expr, env) {
 }
 
 function some(source, p) {
-	var result = true;
+	var result = false;
 	source.iterate(function (e) {
 		result = result || p(e);
 	})

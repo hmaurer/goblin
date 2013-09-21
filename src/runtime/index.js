@@ -8,7 +8,7 @@ function evaluate(ast) {
 		}
 	}
 	var env = new Environment(config)
-	env.scope.set('Bool', {
+	env.scope.set('bool', {
 		iterate: function (f) {
 			[true, false].forEach(f)
 		}

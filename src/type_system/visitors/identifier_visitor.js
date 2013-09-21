@@ -14,4 +14,6 @@ module.exports = function (node, env, inferred) {
 	}
 
 	utils.assertType(node, env, inferred, obj.type)
+	
+	return obj.inferred
 }

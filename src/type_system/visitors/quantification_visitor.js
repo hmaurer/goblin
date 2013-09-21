@@ -1,9 +1,13 @@
 var utils = require('./../utils')
 
 module.exports = function (node, env, inferred) {
-	utils.assertType(node, env, inferred, 'Bool');
+	utils.assertType(node, env, inferred, 'bool');
 
 	var childEnv = env.spawn()
+
+	if (childEnv.scope.has(node.variable.id.name)) {
+		env.error(node.variable, "Already in scope: `%0'", node.variable.id.name)
+	}
 
 	childEnv.scope.set(node.variable.id.name, {
 		kind: 'variable',
@@ -27,4 +31,6 @@ module.exports = function (node, env, inferred) {
 	}
 
 	node.variable._type = obj.type
+	
+	return 'bool'
 }
