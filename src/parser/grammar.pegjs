@@ -1,5 +1,10 @@
 {
 	var T = require('./ast.js')
+
+	var p = function (node) {
+		node.column = column()
+		return node
+	}
 }
 
 start
@@ -10,13 +15,13 @@ expression
 
 quantification
 	= q:identifier _ vars:varlist _ '.' _ e:quantification {
-		return T.createQuantification(q, vars, e)
+		return p(T.createQuantification(q, vars, e))
 	}
 	/ relation
 
 relation
 	= left:biconditional _ '=' _ right:biconditional {
-		return T.createRelation('=', left, right);
+		return p(T.createRelation('=', left, right))
 	}
 	/ biconditional
 
@@ -31,42 +36,42 @@ varlist
 
 var
 	= id:identifier t:(_ ':' _ type_name)? {
-		return T.createVariable(id, t[3])
+		return p(T.createVariable(id, t[3]))
 	}
 
 biconditional
 	= antecedent:implication _ '<=>' consequent:biconditional {
-		return T.createBiconditional(antecedent, consequent)
+		return p(T.createBiconditional(antecedent, consequent))
 	}
 	/ implication
 
 implication
 	= antecedent:disjunction _ '=>' _ consequent:implication  {
-		return T.createImplication(antecedent, consequent)
+		return p(T.createImplication(antecedent, consequent))
 	}
 	/ disjunction
 
 disjunction
 	= left:conjunction _ 'or' _ right:disjunction {
-		return T.createDisjunction(left, right)
+		return p(T.createDisjunction(left, right))
 	}
 	/ conjunction
 
 conjunction
 	= left:negation _ 'and' _ right:conjunction {
-		return T.createConjunction(left, right)
+		return p(T.createConjunction(left, right))
 	}
 	/ negation
 
 negation
 	= 'not' _ e:call {
-		return T.createNegation(e)
+		return p(T.createNegation(e))
 	}
 	/ call
 
 call
 	= p:identifier '(' args:arglist ')' {
-		return T.createCall(p, args)
+		return p(T.createCall(p, args))
 	}
 	/ primary
 
@@ -87,14 +92,14 @@ primary
 	/ identifier
 
 boolean_literal
-	= 'true' { return T.createBooleanLiteral(true) }
-	/ 'false' { return T.createBooleanLiteral(false) }
+	= 'true' { return p(T.createBooleanLiteral(true)) }
+	/ 'false' { return p(T.createBooleanLiteral(false)) }
 
 identifier
-	= _ head:[a-zA-Z] tail:[a-zA-Z0-9_]* _ { return T.createIdentifier(head + tail.join('')) }
+	= _ head:[a-zA-Z] tail:[a-zA-Z0-9_]* _ { return p(T.createIdentifier(head + tail.join(''))) }
 
 type_name
-	= _ head:[A-Z] tail:[a-zA-Z0-9_]* _ { return T.createIdentifier(head + tail.join('')) }
+	= _ head:[A-Z] tail:[a-zA-Z0-9_]* _ { return p(T.createIdentifier(head + tail.join(''))) }
 
 _
 	= [ \t\r\n]*
