@@ -2,7 +2,7 @@
 	"dependencies": {
 		"colors"   	:  "*",
 		"mocha" 	:  "*",
-		"pegjs" 	:  "*",
+		"pegjs": "git://github.com/dmajda/pegjs.git#bea6b1fde74c8aebf802f9bcc3380c65b241e1b7",
 		"sugar"    	:  "*"
 	}
 }
