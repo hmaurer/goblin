@@ -8,12 +8,7 @@ Scope.prototype.set = function (key, value) {
 }
 
 Scope.prototype.get = function (key) {
-	if (this.has(key)) {
-		return this.objects[key]
-	}
-	else if (this.parent != null) {
-		return this.parent.get(key)
-	}
+	return this.objects[key] || (this.parent ? this.parent.get(key) : undefined)
 }
 
 Scope.prototype.has = function (key) {
