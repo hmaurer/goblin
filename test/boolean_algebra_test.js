@@ -15,7 +15,7 @@ var test = function (code, result) {
 	assert.equal(goblin.evaluate(code), result)
 }
 
-describe('Basics', function () {
+describe('Boolean Algebra', function () {
 	it('boolean literals should return their value', function () {
 	   test('true', true)
 	   test('false', false)
@@ -65,22 +65,5 @@ describe('Basics', function () {
 	it('redundance law should hold', function () {
 		test('forall A, B. A or A and B == A', true)
 		test('forall A, B. A and (A or B) == A', true)
-	})
-
-	it('De Morgan\'s laws should hold', function () {
-		test('forall a, b. not (a and b) == not a or not b', true)
-		test('forall a, b. not (a or b) == not a and not b', true)
-	})
-
-	it('tautologies should always be true', function () {
-		test('forall x. x or not x', true)
-	})
-
-	it('inconsistencies should always be false', function () {
-		test('forall x. x and not x', false)
-	})
-
-	it('existential quantifier should behave as expected', function () {
-		test('some x. x', true)
 	})
 })

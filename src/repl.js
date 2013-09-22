@@ -10,6 +10,7 @@ goblin.source('bool', {
 })
 
 function start() {
+	console.log("Welcome to Goblin!")
 	repl.start('> ', process, function(code, context, file, callback) {
 		var result, err;
 
