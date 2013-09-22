@@ -1,11 +1,13 @@
 PEGJS = node_modules/.bin/pegjs
 MOCHA = node_modules/.bin/mocha
 
-.PHONY: test
+.PHONY: test install
 
-default: build
+default: parser
 
-build:
+parser: src/parser/grammar.js
+
+src/parser/grammar.js: src/parser/grammar.pegjs
 	pegjs src/parser/grammar.pegjs
 
 test:
