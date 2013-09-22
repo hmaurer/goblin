@@ -79,4 +79,8 @@ describe('Basics', function () {
 	it('inconsistencies should always be false', function () {
 		test('forall x. x and not x', false)
 	})
+
+	it('existential quantifier should behave as expected', function () {
+		test('some x. x', true)
+	})
 })
