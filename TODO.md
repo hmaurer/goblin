@@ -1,4 +1,2 @@
-- Better type inference mechanism (should be able to infer types for relations if one side is provided)
-- Quantifiers should break as soon as they have a result (datasources should be redesigned a little for this matter)
 - More test coverage
 - A bunch of other stuffs

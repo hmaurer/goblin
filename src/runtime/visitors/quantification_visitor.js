@@ -28,6 +28,9 @@ function some(source, p) {
 	var result = false;
 	source.iterate(function (e) {
 		result = result || p(e);
+		if (result) {
+			return result
+		}
 	})
 	return result;
 }
@@ -36,6 +39,9 @@ function forall(source, p) {
 	var result = true;
 	source.iterate(function (e) {
 		result = result && p(e);
+		if (!result) {
+			return result
+		}
 	})
 	return result;
 }

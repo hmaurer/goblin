@@ -20,8 +20,8 @@ quantification
 	/ relation
 
 relation
-	= left:biconditional _ '=' _ right:biconditional {
-		return p(T.createRelation('=', left, right))
+	= left:biconditional _ '==' _ right:relation {
+		return p(T.createRelation('==', left, right))
 	}
 	/ biconditional
 
