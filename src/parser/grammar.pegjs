@@ -35,7 +35,7 @@ varlist
 	}
 
 var
-	= id:identifier t:(_ ':' _ identifier)? {
+	= id:identifier t:(_ '<-' _ identifier)? {
 		return p(T.createVariable(id, t[3]))
 	}
 
