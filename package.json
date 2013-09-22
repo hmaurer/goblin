@@ -3,6 +3,9 @@
 	"author": "a3gis",
 	"version": "0.0.1-alpha",
 	"description": "Rudimental first-order logic parser and interpreter",
+	"bin": {
+		"goblin": "./bin/goblin"
+	},
 	"dependencies": {
 		"colors"   	:  "*",
 		"sugar"    	:  "*"

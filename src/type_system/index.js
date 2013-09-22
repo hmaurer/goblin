@@ -1,16 +1,20 @@
 var Environment = require('./../shared/environment')
 
-function process(ast) {
+function env() {
 	var config = {
 		error_prefix: '<type error>',
 		getVisitor: function (name) {
 			return require('./visitors/' + name)
 		}
 	}
-	var env = new Environment(config)
+	return new Environment(config)
+}
+
+function run(ast, env) {
 	return env.visit(ast, 'bool')
 }
 
 module.exports = {
-	process: process
+	env: env,
+	run: run
 }

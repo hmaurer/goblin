@@ -1,13 +1,16 @@
 var Environment = require('./../shared/environment')
 
-function evaluate(ast) {
+function env() {
 	var config = {
 		error_prefix: '<runtime error>',
 		getVisitor: function (name) {
 			return require('./visitors/' + name)
 		}
 	}
-	var env = new Environment(config)
+	return new Environment(config)
+}
+
+function run(ast, env) {
 	env.scope.set('bool', {
 		iterate: function (f) {
 			[true, false].forEach(f)
@@ -17,5 +20,6 @@ function evaluate(ast) {
 }
 
 module.exports = {
-	evaluate: evaluate
+	env: env,
+	run: run
 }

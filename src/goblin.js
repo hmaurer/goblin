@@ -1,11 +1,22 @@
 require('sugar')
 
+var parser = require('./parser/grammar.js')
 var type_system = require('./type_system/index')
 var runtime = require('./runtime/index')
 
-function run(ast) {
-	type_system.process(ast)
-	return runtime.evaluate(ast)
+function Goblin() {
+	this.reset()
 }
 
-module.exports = run;
+Goblin.prototype.reset = function () {
+	this.staticEnv = type_system.env()
+	this.dynamicEnv = runtime.env()
+}
+
+Goblin.prototype.evaluate = function (code) {
+	var ast = parser.parse(code)
+	type_system.run(ast, this.staticEnv)
+	return runtime.run(ast, this.dynamicEnv)
+}
+
+module.exports = Goblin;
