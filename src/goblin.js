@@ -6,11 +6,18 @@ var runtime = require('./runtime/index')
 
 function Goblin() {
 	this.reset()
+	this.use(require('./../lib/prelude'))
 }
 
 Goblin.prototype.reset = function () {
 	this.staticEnv = type_system.env()
 	this.dynamicEnv = runtime.env()
+}
+
+Goblin.prototype.use = function (module) {
+	for (name in module.sources) {
+		this.source(name, module.sources[name])
+	}
 }
 
 Goblin.prototype.source = function (name, obj) {

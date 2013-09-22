@@ -3,12 +3,6 @@ var repl = require('repl')
 
 var goblin = new Goblin()
 
-goblin.source('bool', {
-	iterate: function (f) {
-		[true, false].forEach(f)
-	}
-})
-
 function start() {
 	console.log("Welcome to Goblin!")
 	repl.start('> ', process, function(code, context, file, callback) {

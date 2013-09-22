@@ -4,13 +4,6 @@ var Goblin = require('./../src/goblin')
 
 var goblin = new Goblin()
 
-goblin.source('bool', {
-	iterate: function (f) {
-		f(true)
-		f(false)
-	}
-})
-
 var test = function (code, result) {
 	assert.equal(goblin.evaluate(code), result)
 }
