@@ -64,7 +64,7 @@ conjunction
 	/ negation
 
 negation
-	= 'not' _ e:call {
+	= 'not' _ e:negation {
 		return p(T.createNegation(e))
 	}
 	/ call
