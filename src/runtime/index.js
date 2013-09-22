@@ -11,11 +11,6 @@ function env() {
 }
 
 function run(ast, env) {
-	env.scope.set('bool', {
-		iterate: function (f) {
-			[true, false].forEach(f)
-		}
-	})
 	return env.visit(ast)
 }
 

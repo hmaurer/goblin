@@ -13,7 +13,10 @@ Environment.prototype.spawn = function () {
 
 Environment.prototype.error = function (node, message) {
 	message = formatString(message, Array.prototype.slice.call(arguments, 2))
-	throw this.config.error_prefix.red + ':1:' + node.column + ' ' + message
+	throw {
+		message: message,
+		column: node.column
+	}
 }
 
 Environment.prototype.visit = function (node, inferred) {

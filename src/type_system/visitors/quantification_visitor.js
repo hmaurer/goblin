@@ -19,7 +19,11 @@ module.exports = function (node, env, inferred) {
 	var obj = childEnv.scope.get(node.variable.id.name)
 
 	if (obj.type == null) {
-		env.error(node.variable.id, "Could not infer the type of the variable `%0'", node.variable.id.name)
+		env.error(
+			node.variable,
+			"Could not infer the type of variable `%0'",
+			node.variable.id.name
+		)
 	}
 
 	if (node.variable._type != null && node.variable._type != obj.type) {

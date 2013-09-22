@@ -13,6 +13,13 @@ Goblin.prototype.reset = function () {
 	this.dynamicEnv = runtime.env()
 }
 
+Goblin.prototype.source = function (name, obj) {
+	this.staticEnv.scope.set(name, {
+		kind: 'source'
+	})
+	this.dynamicEnv.scope.set(name, obj)
+}
+
 Goblin.prototype.evaluate = function (code) {
 	var ast = parser.parse(code)
 	type_system.run(ast, this.staticEnv)
