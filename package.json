@@ -1,8 +1,14 @@
 {
+	"name": "goblin",
+	"author": "a3gis",
+	"version": "0.0.1-alpha",
+	"description": "Rudimental first-order logic parser and interpreter",
 	"dependencies": {
 		"colors"   	:  "*",
-		"mocha" 	:  "*",
-		"pegjs": "git://github.com/dmajda/pegjs.git#bea6b1fde74c8aebf802f9bcc3380c65b241e1b7",
 		"sugar"    	:  "*"
+	},
+	"devDependencies": {
+		"mocha" 	:  "*",
+		"pegjs": "git://github.com/dmajda/pegjs.git#bea6b1fde74c8aebf802f9bcc3380c65b241e1b7"
 	}
 }

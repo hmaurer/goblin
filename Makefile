@@ -10,3 +10,6 @@ build:
 
 test:
 	$(MOCHA) test/*
+
+install:
+	npm install
