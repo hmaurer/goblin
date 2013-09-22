@@ -8,7 +8,7 @@ default: parser
 parser: src/parser/grammar.js
 
 src/parser/grammar.js: src/parser/grammar.pegjs
-	pegjs src/parser/grammar.pegjs
+	$(PEGJS) <"$<" >"$@"
 
 test:
 	$(MOCHA) test/*

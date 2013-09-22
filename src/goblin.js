@@ -1,3 +1,5 @@
+require('sugar')
+
 var type_system = require('./type_system/index')
 var runtime = require('./runtime/index')
 

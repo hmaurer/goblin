@@ -1,5 +1,3 @@
-require('sugar')
-
 var parser = require('./src/parser/grammar')
 var run = require('./src/goblin')
 

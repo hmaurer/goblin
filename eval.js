@@ -1,4 +1,3 @@
-require('sugar')
 require('colors')
 
 var parser = require('./src/parser/grammar.js')
