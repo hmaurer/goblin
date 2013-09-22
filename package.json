@@ -6,6 +6,9 @@
 	"bin": {
 		"goblin": "./bin/goblin"
 	},
+	"scripts": {
+		"test": "make test"
+	},
 	"dependencies": {
 		"colors"   	:  "*",
 		"sugar"    	:  "*"
