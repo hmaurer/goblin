@@ -13,8 +13,7 @@ Environment.prototype.spawn = function () {
 
 Environment.prototype.error = function (node, message) {
 	message = formatString(message, Array.prototype.slice.call(arguments, 2))
-	console.log(this.config.error_prefix.red + ':1:' + node.column + ' ' + message)
-	process.exit(1)
+	throw this.config.error_prefix.red + ':1:' + node.column + ' ' + message
 }
 
 Environment.prototype.visit = function (node, inferred) {
