@@ -14,7 +14,7 @@ module.exports = function (node, env, inferred) {
 		type: node.variable._type ? node.variable._type.name : undefined
 	})
 
-	childEnv.visit(node.expr, inferred)
+	childEnv.visit(node.expr, 'bool')
 
 	var obj = childEnv.scope.get(node.variable.id.name)
 

@@ -4,9 +4,11 @@ var parser = require('./parser/grammar.js')
 var type_system = require('./type_system/index')
 var runtime = require('./runtime/index')
 
-function Goblin() {
+function Goblin(no_prelude) {
 	this.reset()
-	this.use(require('./../lib/prelude'))
+	if (!no_prelude) {
+		this.use(require('./../lib/prelude'))
+	}
 }
 
 Goblin.prototype.reset = function () {
