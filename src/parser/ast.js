@@ -76,7 +76,7 @@ exports.createVariable = function (id, t) {
 	return {
 		type: 'variable',
 		id: id,
-		_type: t ? t.name : undefined
+		_type: t
 	}
 }
 

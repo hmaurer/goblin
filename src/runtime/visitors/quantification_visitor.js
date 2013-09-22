@@ -14,10 +14,6 @@ function quantify(quantifier, variable, expr, env) {
 	
 	var source = env.scope.get(variable._type)
 
-	if (source == null) {
-		env.error(variable, "Could not find inferred datasource `%0'", variable._type)
-	}
-
 	return quantifier(source, function (e) {
 		childEnv.scope.set(variable.id.name, e);
 		return childEnv.visit(expr);

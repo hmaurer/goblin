@@ -54,4 +54,8 @@ describe('Propositional logic', function () {
 	it('inferred type of a variable must matched actual type', function () {
 		invalid('forall x <- foo. x')
 	})
+
+	it('absence of a source for a given type should throw an error', function () {
+		invalid('forall x <- movie. true')
+	})
 })
