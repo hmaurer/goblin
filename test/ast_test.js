@@ -62,7 +62,7 @@ describe('AST', function () {
 		test('a or b or c', or(id('a'), or(id('b'), id('c'))))
 	})
 
-	it('should respect precedence', function () {
+	it('should respect precedence order', function () {
 		eq('not a and b', '(not a) and b')
 		eq('a or b and c', 'a or (b and c)')
 		eq('a and b or c', '(a and b) or c')
