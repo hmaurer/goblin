@@ -4,8 +4,8 @@ module.exports = function (node, env) {
 			return quantify(forall, node.variable, node.expr, env);
 		case 'some':
 			return quantify(some, node.variable, node.expr, env);
-		default:
-			env.error(node.quantifier, "Unknown quantifier '%0'", node.quantifier.name)
+		case 'one':
+			return quantify(one, node.variable, node.expr, env);
 	}
 }
 
@@ -29,6 +29,16 @@ function some(source, p) {
 		}
 	})
 	return result;
+}
+
+function one(source, p) {
+	var n = 0
+	source.iterate(function (e) {
+		if (p(e)) {
+			n++
+		}
+	})
+	return n == 1;
 }
 
 function forall(source, p) {

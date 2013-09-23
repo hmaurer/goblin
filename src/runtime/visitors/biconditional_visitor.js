@@ -1,4 +1,5 @@
 module.exports = function (node, env) {
 	var antecedent = env.visit(node.antecedent)
- 	return !antecedent || env.visit(node.consequent)
+	var consequent = env.visit(node.consequent)
+	return antecedent == consequent
 }
