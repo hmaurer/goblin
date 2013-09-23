@@ -88,11 +88,11 @@ arglist
 	}
 
 primary
-	= "(" _ e:expression _ ")" {
+	= boolean_literal
+	/ identifier
+	/ "(" _ e:expression _ ")" {
 		return e;
 	}
-	/ boolean_literal
-	/ identifier
 
 boolean_literal
 	= 'true' { return p(T.createBooleanLiteral(true)) }

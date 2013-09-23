@@ -1,4 +1,4 @@
-PEGJS = node_modules/.bin/pegjs
+PEGJS = node_modules/.bin/pegjs --cache
 MOCHA = node_modules/.bin/mocha
 
 .PHONY: test install
