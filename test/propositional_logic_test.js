@@ -51,4 +51,10 @@ describe('Propositional logic', function () {
 	it('absence of a source for a given type should throw an error', function () {
 		invalid('forall x <- movie. true')
 	})
+	
+	it('uniqueness quantifier should behave as expected', function () {
+		test('one x. x', true)
+		test('one x. x or not x', false)
+		test('forall a <- bool. one b. a == b', true)
+	})
 })
