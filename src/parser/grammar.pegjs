@@ -23,6 +23,9 @@ relation
 	= left:biconditional _ '==' _ right:relation {
 		return p(T.createRelation('==', left, right))
 	}
+	/ left:biconditional _ '/=' _ right:relation {
+		return p(T.createNegation(p(T.createRelation('==', left, right))))
+	}
 	/ biconditional
 
 varlist

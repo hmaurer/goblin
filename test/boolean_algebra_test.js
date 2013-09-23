@@ -17,8 +17,8 @@ describe('Boolean Algebra', function () {
 	it('boolean values should be equal to themselves', function () {
 		test('true == true', true)
 		test('false == false', true)
-		test('true == false', false)
-		test('false == true', false)
+		test('true /= false', true)
+		test('false /= true', true)
 	})
 
 	it('negation should inverse a boolean value', function () {
