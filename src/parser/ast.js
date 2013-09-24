@@ -64,10 +64,10 @@ exports.createQuantification = function (q, vars, expr) {
 	}, expr);
 }
 
-exports.createCall = function (p, args) {
+exports.createCall = function (callee, args) {
 	return {
 		type: 'call',
-		predicate: p,
+		callee: callee,
 		args: args
 	}
 }

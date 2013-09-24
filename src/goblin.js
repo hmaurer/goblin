@@ -20,6 +20,9 @@ Goblin.prototype.use = function (module) {
 	for (name in module.sources) {
 		this.source(name, module.sources[name])
 	}
+	for (name in module.predicates) {
+		this.predicate(name, module.predicates[name])
+	}
 }
 
 Goblin.prototype.source = function (name, obj) {
@@ -27,6 +30,14 @@ Goblin.prototype.source = function (name, obj) {
 		kind: 'source'
 	})
 	this.dynamicEnv.scope.set(name, obj)
+}
+
+Goblin.prototype.predicate = function (name, obj) {
+	this.staticEnv.scope.set(name, {
+		kind: 'predicate',
+		signature: obj.signature
+	})
+	this.dynamicEnv.scope.set(name, obj.body)
 }
 
 Goblin.prototype.evaluate = function (code) {

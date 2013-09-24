@@ -12,11 +12,16 @@ function start() {
 			result = goblin.evaluate(code)
 		}
 		catch (err) {
-			var separator = new Array(err.message.length+1).join('-').red
-			console.log(new Array(err.column+1).join(" ") + "^".red)
-			console.log(separator)
-			console.log(err.message.red)
-			console.log(separator)
+			if (err.message && err.column != undefined) {
+				var separator = new Array(err.message.length+1).join('-').red
+				console.log(new Array(err.column+1).join(" ") + "^".red)
+				console.log(separator)
+				console.log(err.message.red)
+				console.log(separator)
+			}
+			else {
+				console.log(err)
+			}
 		}
 
 		callback(err, result);

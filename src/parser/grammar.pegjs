@@ -73,8 +73,8 @@ negation
 	/ call
 
 call
-	= p:identifier '(' args:arglist ')' {
-		return p(T.createCall(p, args))
+	= callee:identifier '(' args:arglist ')' {
+		return p(T.createCall(callee, args))
 	}
 	/ primary
 

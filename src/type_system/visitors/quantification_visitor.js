@@ -35,7 +35,12 @@ module.exports = function (node, env, inferred) {
 	}
 
 	if (!env.scope.has(obj.type)) {
-		env.error(node.variable._type, "No source available for type `%0'", obj.type)
+		if (node.variable._type != undefined) {
+			env.error(node.variable._type, "No source available for type `%0'", obj.type)
+		}
+		else {
+			env.error(node.variable, "No source available for inferred type `%0'", obj.type)
+		}
 	}
 
 	node.variable._type = obj.type
