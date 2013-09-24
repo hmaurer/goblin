@@ -25,7 +25,7 @@ function some(source, p) {
 	source.iterate(function (e) {
 		result = result || p(e);
 		if (result) {
-			return result
+			return false
 		}
 	})
 	return result;
@@ -37,6 +37,9 @@ function one(source, p) {
 		if (p(e)) {
 			n++
 		}
+		if (n > 1) {
+			return false
+		}
 	})
 	return n == 1;
 }
@@ -46,7 +49,7 @@ function forall(source, p) {
 	source.iterate(function (e) {
 		result = result && p(e);
 		if (!result) {
-			return result
+			return false
 		}
 	})
 	return result;
