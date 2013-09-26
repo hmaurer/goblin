@@ -1,4 +1,5 @@
 require('sugar')
+var path = require('path')
 
 var Goblin = require('./goblin')
 var repl = require('repl')
@@ -22,8 +23,19 @@ function start() {
 }
 
 function command(str) {
-	if (str == 'bindings') {
+	var parts = str.split(' ')
+	if (parts[0] == 'bindings') {
 		return goblin.staticEnv.scope.objects
+	}
+	else if (parts[0] == 'l') {
+		try {
+			var module = require(path.resolve(process.cwd(), parts[1]))
+			goblin.use(module)
+			console.log("Module loaded: " + (module.name || parts[1]))
+		}
+		catch (e) {
+			console.log(e.message.red)
+		}
 	}
 	else {
 		return "unknown command ':" + str + "'"
