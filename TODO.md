@@ -1,2 +1,3 @@
+- Support for mathematical expressions
 - More test coverage
 - A bunch of other stuffs
