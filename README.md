@@ -11,6 +11,6 @@ Rudimental first-order logic parser and interpreter
     true or true and false
     true and (true or false)
     not true
-    forall x <- bool, y. x or y == not (not x and not y)
-    forall x. some y. x == y
+    forall x, y. x or y == not (not x and not y)
+    forall x <- bool. some y. x == y
     forall x. x => (one y. x and y)
