@@ -8,6 +8,7 @@ var goblin = new Goblin()
 
 function start() {
 	console.log("Welcome to Goblin!")
+	console.log("+ ".blue + "Prelude")
 	repl.start('> ', process, function(code, context, file, callback) {
 		var result, err;
 
@@ -31,11 +32,14 @@ function command(str) {
 		try {
 			var module = require(path.resolve(process.cwd(), parts[1]))
 			goblin.use(module)
-			console.log("Module loaded: " + (module.name || parts[1]))
+			console.log("+ ".blue + (module.name || parts[1]))
 		}
 		catch (e) {
 			console.log(e.message.red)
 		}
+	}
+	else if (parts[0] == 'reset') {
+		goblin.reset()
 	}
 	else {
 		return "unknown command ':" + str + "'"
