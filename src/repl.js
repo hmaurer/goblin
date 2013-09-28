@@ -1,5 +1,8 @@
 require('sugar')
 var path = require('path')
+var fs = require('fs')
+
+var ArrayAdaptor = require('./adaptors/array_adaptor')
 
 var Goblin = require('./goblin')
 var repl = require('repl')
@@ -33,6 +36,30 @@ function command(str) {
 			var module = require(path.resolve(process.cwd(), parts[1]))
 			goblin.use(module)
 			console.log("+ ".blue + (module.name || parts[1]))
+		}
+		catch (e) {
+			console.log(e.message.red)
+		}
+	}
+	else if (parts[0] == 's') {
+		try {
+			fs.readFile(path.resolve(process.cwd(), parts[1]), function (err, data) {
+				if (err) {
+					console.log(err.message.red)
+					return
+				}
+
+				var source = JSON.parse(data)
+
+				if (!source.type) {
+					console.log("Cannot find Source.type".red)
+				}
+				if (!Array.isArray(source.objects)) {
+					console.log("Source.objects should be an array".red)
+				}
+
+				goblin.source(source.type, new ArrayAdaptor(source.objects))
+			})
 		}
 		catch (e) {
 			console.log(e.message.red)
