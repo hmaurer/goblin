@@ -1,3 +1,3 @@
 - Support for mathematical expressions
-- More test coverage
+- Let-expression
 - A bunch of other stuffs
