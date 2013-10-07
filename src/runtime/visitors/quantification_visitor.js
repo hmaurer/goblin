@@ -6,6 +6,8 @@ module.exports = function (node, env) {
 			return quantify(some, node.variable, node.expr, env);
 		case 'one':
 			return quantify(one, node.variable, node.expr, env);
+		default:
+			env.error(node.quantifier, "Unknown quantifier `%0`", node.quantifier.name);
 	}
 }
 

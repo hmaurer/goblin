@@ -15,6 +15,7 @@
 	},
 	"devDependencies": {
 		"mocha" 	:  "*",
+		"cli-table" :  "*",
 		"pegjs": "git://github.com/dmajda/pegjs.git#bea6b1fde74c8aebf802f9bcc3380c65b241e1b7"
 	}
 }
