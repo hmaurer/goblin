@@ -43,7 +43,7 @@ var
 	}
 
 biconditional
-	= antecedent:implication _ '<=>' consequent:biconditional {
+	= antecedent:implication _ '<=>' _ consequent:biconditional {
 		return p(T.createBiconditional(antecedent, consequent))
 	}
 	/ implication

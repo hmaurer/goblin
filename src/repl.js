@@ -14,7 +14,7 @@ function start() {
 	console.log("+ ".blue + "Prelude")
 	repl.start('> ', process, function(code, context, file, callback) {
 		var result, err;
-
+		
 		if (code[1] == ':') {
 			result = command(code.slice(2, code.length - 2))
 		}
