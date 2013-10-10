@@ -2,7 +2,6 @@ var Environment = require('./../shared/environment')
 
 function env() {
 	var config = {
-		error_prefix: '<type error>',
 		getVisitor: function (name) {
 			return require('./visitors/' + name)
 		}
