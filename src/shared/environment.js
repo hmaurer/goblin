@@ -1,5 +1,3 @@
-require('colors')
-
 var Scope = require('./scope')
 
 function Environment(config, scope) {
