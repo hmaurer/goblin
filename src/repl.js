@@ -12,6 +12,7 @@ var goblin = new Goblin()
 function start() {
 	console.log("Welcome to Goblin!")
 	console.log("+ ".blue + "Prelude")
+	console.log("Type an expression, i.e: `true or false`".grey)
 	repl.start('> ', process, function(code, context, file, callback) {
 		var result, err;
 		
