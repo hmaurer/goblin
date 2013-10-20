@@ -1,4 +1,3 @@
-- Support for mathematical expressions
 - Let-expression
 - Actual truth-tables
 - Factor out a basic boolean logic engine
